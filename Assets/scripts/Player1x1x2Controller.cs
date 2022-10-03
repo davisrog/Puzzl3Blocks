@@ -77,6 +77,7 @@ public class Player1x1x2Controller : MonoBehaviour
             //reset once we complete the move
             if (rotationRatio == 1)
             {
+                //new WaitForSeconds(20);  //wait to reset flags so the block can fall
                 isMoving = false;
                 dirX = 0;
                 dirZ = 0;
