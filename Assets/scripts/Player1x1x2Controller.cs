@@ -6,7 +6,9 @@ public class Player1x1x2Controller : MonoBehaviour
 {
     //private float buttonSensitivity = 0.2f;  //for controller input
     private float rollDuration = .25f;
-    private bool isMoving = false;
+    private bool isRotating = false;
+    // private bool isMoving = false;
+    private Rigidbody box;
     Vector3 playerdimenions;
     float dirX = 0;
     float dirZ = 0;
@@ -21,6 +23,7 @@ public class Player1x1x2Controller : MonoBehaviour
     void Start()
     {
         playerdimenions = transform.lossyScale;   //get the dimensions
+        box = GetComponent<Rigidbody>();
    
     }
 
@@ -45,7 +48,7 @@ public class Player1x1x2Controller : MonoBehaviour
             {
             y = -1;
             }
-        if ( !isMoving && (x != 0 || y != 0))
+        if ( !IsMoving() && (x != 0 || y != 0))
         {
             dirX = x;    //x direction
             dirZ = y;   //z direction
@@ -57,13 +60,13 @@ public class Player1x1x2Controller : MonoBehaviour
             setCenterAndAngle();
            // Debug.Log("start Pos: " + startPosition + ", startRotation: " + startRotation + ", toRotation: " + toRotation);
             rollTime = 0;
-            isMoving = true;
+            isRotating = true;
         }
     }
 
     void FixedUpdate() // used for physics to act right even if there's lag and so on that affects Update
     {
-        if (isMoving)
+        if (isRotating)
         {
             rollTime += Time.fixedDeltaTime;                //increase rotation time by deltatime (inceases at fixedupdate interval)
             float rotationRatio = Mathf.Lerp(0, 1, rollTime / rollDuration);   //lerp makes things look smooth moves the ratio from 0 to 1 at a linear rate of the time/duration ratio
@@ -78,12 +81,18 @@ public class Player1x1x2Controller : MonoBehaviour
             if (rotationRatio == 1)
             {
                 //new WaitForSeconds(20);  //wait to reset flags so the block can fall
-                isMoving = false;
+                isRotating = false;
                 dirX = 0;
                 dirZ = 0;
                 rollTime = 0;
+
             }
         }
+    }
+
+    bool IsMoving()
+    {
+        return (isRotating || !box.IsSleeping());
     }
 
     //this finds the mid point of the 3d rectangle...and the angle it's pointed...
