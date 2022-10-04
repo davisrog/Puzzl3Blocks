@@ -14,6 +14,6 @@ public class MainButtnGroup : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit(); //Quits game
+        Application.Quit(); //This quits the game
     }
 }
