@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainButtnGroup : MonoBehaviour
+public class MainMenuButtnController : MonoBehaviour
 {
     public void PlayGame()
     {

@@ -209,7 +209,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 800999311}
-        m_TargetAssemblyTypeName: MainButtnGroup, Assembly-CSharp
+        m_TargetAssemblyTypeName: MainMenuButtnController, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
@@ -457,7 +457,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 800999311}
-        m_TargetAssemblyTypeName: MainButtnGroup, Assembly-CSharp
+        m_TargetAssemblyTypeName: MainMenuButtnController, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
