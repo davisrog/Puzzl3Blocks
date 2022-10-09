@@ -7,10 +7,10 @@ public class MainButtnGroup : MonoBehaviour
 {
     public void PlayGame()
     {
-       Debug.Log("start pressed");
+       
         if (PlayerPrefs.GetString("UserName") == "" || PlayerPrefs.GetString("UserGender") == "" || PlayerPrefs.GetString("UserAge") == "" || PlayerPrefs.GetString("UserGameExp") == "")
         {
-            Debug.Log("knows there's no player prefs");
+            //this asks for player information before they start...we don't really need their name, looks like there's a unique userid that unity assigns in the registry that we can get
             SceneManager.LoadScene("UserDataMenu");
         }
         else
