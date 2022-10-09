@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+public class DataCollector : System.Object  //don't want to attach it to an object, just want it roll with it
+{
+
+    private int moves = 0;
+    private DateTime starttime;
+    private DateTime endtime;
+    private DateTime time;
+    private int deaths = 0;
+   // private string likegame;
+   // private string suggestions;
+   // private string avatar_type;
+
+    public void IncrementMoves()
+    {
+        this.moves += 1;
+    }
+
+    public void IncrementDeaths()
+    {
+        this.deaths += 1;
+    }
+
+    public int GetMoves()
+    {
+        return this.moves;
+    }
+
+    public int GetDeaths()
+    {
+        return this.deaths;
+    }
+
+
+    public void SetStartTime()
+    {
+        this.starttime = DateTime.Now;
+    }
+
+    public void SetEndTime()
+    {
+        this.endtime = DateTime.Now;
+    }
+
+    public TimeSpan GetDeltaTime()
+    {
+        return this.endtime - this.starttime;
+    }
+
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}

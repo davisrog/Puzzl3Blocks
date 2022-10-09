@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player1x1x2Controller : MonoBehaviour
 {
     //private float buttonSensitivity = 0.2f;  //for controller input
@@ -10,9 +11,13 @@ public class Player1x1x2Controller : MonoBehaviour
     // private bool isMoving = false;
     private Rigidbody box;
     Vector3 playerdimenions;
+    Vector3 playerstart;
+    Quaternion playerstartrotation;
     float dirX = 0;
     float dirZ = 0;
     float rollTime = 0;
+    public DataCollector dataCollector = new DataCollector(); //not monobehavior
+    
 
     float center = 1; //I guess it's the radius
     float startAngleRad = 0;
@@ -22,14 +27,26 @@ public class Player1x1x2Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       // dataCollector dataCollector;
         playerdimenions = transform.lossyScale;   //get the dimensions
+        playerstart = transform.position;
+        playerstartrotation = transform.rotation;
+        //DataCollector dataCollector = new DataCollector();
         box = GetComponent<Rigidbody>();
+        
    
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y < -5f)
+        {
+            dataCollector.IncrementDeaths();
+            transform.position = playerstart;
+            transform.rotation = playerstartrotation;
+            Debug.Log("deaths: " + dataCollector.GetDeaths());
+        }
         float x = 0;
         float y = 0;
             if (Input.GetKeyDown("right"))
@@ -50,6 +67,13 @@ public class Player1x1x2Controller : MonoBehaviour
             }
         if ( !IsMoving() && (x != 0 || y != 0))
         {
+            Debug.Log("moves before push: " + dataCollector.GetMoves());
+            dataCollector.IncrementMoves();
+            Debug.Log("moves after push: " + dataCollector.GetMoves());
+            if (dataCollector.GetMoves() < 1)
+            {
+                dataCollector.SetStartTime();
+            }
             dirX = x;    //x direction
             dirZ = y;   //z direction
             startPosition = transform.position;         //starting position
@@ -58,7 +82,7 @@ public class Player1x1x2Controller : MonoBehaviour
             toRotation = transform.rotation;                    //get that rotation point
             transform.rotation = startRotation;             //set the player's rotation back where it started
             setCenterAndAngle();
-           // Debug.Log("start Pos: " + startPosition + ", startRotation: " + startRotation + ", toRotation: " + toRotation);
+           // Debug.Log(dataCollector.GetMoves());
             rollTime = 0;
             isRotating = true;
         }
@@ -110,24 +134,23 @@ public class Player1x1x2Controller : MonoBehaviour
             dirVec = new Vector3(0, 0, 1);  //direction "forward"
         }
 
-        //this gives us our orientation and calculates our angle and length for the center point
+        //this gives us our orientation and calculates our angle and length for the center point. dot product should equal 1 but using > .98 to allow for some inaccuracies in calculations
         if (Mathf.Abs(Vector3.Dot(transform.right, dirVec)) > 0.98) //  is direction right/lef?
-        {                       // 
+        {                        
             if (Mathf.Abs(Vector3.Dot(transform.up, upVector)) > 0.98)   
-            {                   // 
+            {                   
                 center = Mathf.Sqrt(Mathf.Pow(playerdimenions.x / 2f, 2f) + Mathf.Pow(playerdimenions.y / 2f, 2f)); // square root of ((x/2)sqrd + ((y/2)sqrd)
-                startAngleRad = Mathf.Atan(playerdimenions.y / playerdimenions.x);// arctan of the
+                startAngleRad = Mathf.Atan(playerdimenions.y / playerdimenions.x);// arctan 
    
-               // Debug.Log(Mathf.Atan(playerdimenions.y / playerdimenions.x));
+               
             }
             else if (Mathf.Abs(Vector3.Dot(transform.forward, upVector)) > 0.98)
-            {       // 
-                    //  Debug.Log("right dot dirVec > 99 and forward dot up vec > .99");
+            {       
+                    
                 center = Mathf.Sqrt(Mathf.Pow(playerdimenions.x / 2f, 2f) + Mathf.Pow(playerdimenions.z / 2f, 2f));
 
                 startAngleRad = Mathf.Atan(playerdimenions.z / playerdimenions.x);
-               // Debug.Log(Mathf.Atan(playerdimenions.z / playerdimenions.x));
-
+               
             }
 
         }
@@ -140,8 +163,7 @@ public class Player1x1x2Controller : MonoBehaviour
                 startAngleRad = Mathf.Atan(playerdimenions.x / playerdimenions.y);
             }
             else if (Mathf.Abs(Vector3.Dot(transform.forward, upVector)) > 0.98)
-            {       // 
-                    //  Debug.Log("up dot dirVec > 99 and forward dot up vec > .99");
+            {       
                 center = Mathf.Sqrt(Mathf.Pow(playerdimenions.y / 2f, 2f) + Mathf.Pow(playerdimenions.z / 2f, 2f));
        
                 startAngleRad = Mathf.Atan(playerdimenions.z / playerdimenions.y);
@@ -151,21 +173,19 @@ public class Player1x1x2Controller : MonoBehaviour
         {           //
 
             if (Mathf.Abs(Vector3.Dot(transform.right, upVector)) > 0.98)
-            {                   // 
-                                //  Debug.Log("forward dot dirVec > 99 and right dot up vec > .99");
+            {                   
                 center = Mathf.Sqrt(Mathf.Pow(playerdimenions.z / 2f, 2f) + Mathf.Pow(playerdimenions.x / 2f, 2f));
             
                 startAngleRad = Mathf.Atan(playerdimenions.x / playerdimenions.z);
             }
             else if (Mathf.Abs(Vector3.Dot(transform.up, upVector)) > 0.98)
-            {               // 
-                //Debug.Log("forward dot dirVec > 99 and up dot up vec > .99");
+            {               
                 center = Mathf.Sqrt(Mathf.Pow(playerdimenions.z / 2f, 2f) + Mathf.Pow(playerdimenions.y / 2f, 2f));
              
                 startAngleRad = Mathf.Atan(playerdimenions.y / playerdimenions.z);
             }
         }
-        //Debug.Log ("center: " + center + ", startAngle: " + startAngleRad);
+        
 
     }
     

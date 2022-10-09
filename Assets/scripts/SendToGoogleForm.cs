@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking; //webrequest
 
 public class SendToGoogleForm : MonoBehaviour
 {
@@ -8,6 +9,13 @@ public class SendToGoogleForm : MonoBehaviour
     private string uage = "";
     private string ugender = "";
     private string ugameexp = "";
+    private int moves;
+    private string time;
+    private int deaths;
+    private string likegame;
+    private string suggestions;
+    private string avatar_type;
+
     private string BASE_URL = "";  //get from google
     // Start is called before the first frame update
     void Start()
@@ -16,6 +24,7 @@ public class SendToGoogleForm : MonoBehaviour
        uage = PlayerPrefs.GetString("UserAge", "missing");
        ugender = PlayerPrefs.GetString("UserGender", "missing");
        ugameexp = PlayerPrefs.GetString("UserGameExp", "missing");
+       
     }
 
     // Update is called once per frame
@@ -24,7 +33,7 @@ public class SendToGoogleForm : MonoBehaviour
         
     }
 
-    IEnumerator Post(string uname, string uage, string ugender, string ugameexp, int moves, float time, int deaths, string likegame, string suggestions)
+    IEnumerator Post(string uname, string uage, string ugender, string ugameexp, int moves, string time, int deaths, string likegame, string suggestions, string avatar_type)
     {
         WWWForm form = new WWWForm();
         //dependent variables the user provides
@@ -40,6 +49,7 @@ public class SendToGoogleForm : MonoBehaviour
         //user provides after playing
         form.AddField("", likegame);
         form.AddField("", suggestions);
+        form.AddField("", avatar_type);
 
 
 
@@ -63,6 +73,6 @@ public class SendToGoogleForm : MonoBehaviour
     {
         //teststring = test.GetComponent<InputField>().text;
 
-        StartCoroutine(Post(uname, uage,  ugender,  ugameexp,  moves,  time,  deaths,  likegame,  suggestions));
+        StartCoroutine(Post(uname, uage,  ugender,  ugameexp,  moves,  time,  deaths,  likegame,  suggestions, avatar_type));
     }
 }
