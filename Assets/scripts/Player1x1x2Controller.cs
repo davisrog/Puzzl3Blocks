@@ -33,6 +33,7 @@ public class Player1x1x2Controller : MonoBehaviour
         playerstartrotation = transform.rotation;
         //DataCollector dataCollector = new DataCollector();
         box = GetComponent<Rigidbody>();
+        dataCollector.SetStartTime();
         
    
     }

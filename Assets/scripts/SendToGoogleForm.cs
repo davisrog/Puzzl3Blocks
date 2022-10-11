@@ -63,7 +63,7 @@ public class SendToGoogleForm : MonoBehaviour
     }
 
     //IEnumerator Post(string uname, string uage, string ugender, string ugameexp, int moves, string timeonlevel, int deaths, string likegame, string suggestions, string avatar_type, string likepuzzlegames)
-    IEnumerator Post(int moves, TimeSpan timeonlevel, int deaths, string likegame, string suggestions, string avatar_type, string likepuzzlegames)
+    IEnumerator Post(int moves, string timeonlevel, int deaths, string likegame, string suggestions, string avatar_type, string likepuzzlegames)
     {
         WWWForm form = new WWWForm();
        // timeonlevel = timeonlevel.ToString(@"hh\:mm\:ss");
@@ -75,7 +75,7 @@ public class SendToGoogleForm : MonoBehaviour
         form.AddField("entry.1004050490", likepuzzlegames);
         //game tracks
         form.AddField("entry.1234682582", moves);
-       // form.AddField("entry.1738161824", timeonlevel);
+        form.AddField("entry.1738161824", timeonlevel);
         form.AddField("entry.1758611915", deaths);
 
         //user provides after playing
@@ -101,7 +101,7 @@ public class SendToGoogleForm : MonoBehaviour
         www.Dispose(); //have to dispose this or we get a memory leak
     }
 
-    public void Send(int moves, TimeSpan timeonlevel, int deaths, string likegame, string suggestions, string avatar_type, string likepuzzlegames)
+    public void Send(int moves, string timeonlevel, int deaths, string likegame, string suggestions, string avatar_type, string likepuzzlegames)
     {
         //teststring = test.GetComponent<InputField>().text;
         /* moves = dataCollector.GetMoves();

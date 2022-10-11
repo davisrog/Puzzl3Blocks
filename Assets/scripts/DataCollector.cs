@@ -46,9 +46,19 @@ public class DataCollector : System.Object  //don't want to attach it to an obje
         this.endtime = DateTime.Now;
     }
 
+    public DateTime GetStartTime()
+    {
+       return this.starttime;
+    }
+
+    public DateTime GetEndTime()
+    {
+        return this.endtime;
+    }
+
     public TimeSpan GetDeltaTime()
     {
-        return this.endtime - this.starttime;
+        return this.starttime.Subtract(this.endtime);
     }
 
     
