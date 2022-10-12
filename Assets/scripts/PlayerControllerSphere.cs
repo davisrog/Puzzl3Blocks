@@ -7,6 +7,12 @@ public class PlayerControllerSphere : MonoBehaviour
     public Rigidbody ps;
     private float pushForce = 10f;
 
+    //used to reset player after death
+    Vector3 playerstart;
+    Quaternion playerstartrotation;
+    
+
+    public DataCollector dataCollector = new DataCollector();//data collector
     float x = 0;
     float z = 0;
     //float keystroke = 0;
@@ -14,13 +20,31 @@ public class PlayerControllerSphere : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      //  playerdimenions = transform.lossyScale;   //get the dimensions
+        playerstart = ps.position;
+        dataCollector.SetStartTime();
 
     }
 
     // Update is called once per frame good for receiving inputs
     void Update()
     {
+        if (transform.position.y < -5f)  //death
+        {
+            dataCollector.IncrementDeaths();
+            ps.velocity = Vector3.zero;
+            ps.angularVelocity = Vector3.zero;
+           // Debug.Log(ps.angularVelocity);
+           // Debug.Log(ps.velocity);
+
+            ps.position = playerstart;
+           // Debug.Log("playerstart: " + playerstart);
+           // Debug.Log("position: " + ps.position);
+            //ps.rotation = playerstartrotation;
+            Debug.Log("deaths: " + dataCollector.GetDeaths());
+           // ps.velocity = Vector3.zero;
+           // ps.angularVelocity = Vector3.zero;
+        }
+
         ProcessKeys();   
 
     }
@@ -34,6 +58,18 @@ public class PlayerControllerSphere : MonoBehaviour
     {
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
+
+        if (Input.GetKeyDown("right") || Input.GetKeyDown("left") || Input.GetKeyDown("down") || Input.GetKeyDown("up"))
+        {
+            Debug.Log("moves before push: " + dataCollector.GetMoves());
+            dataCollector.IncrementMoves();
+            Debug.Log("moves after push: " + dataCollector.GetMoves());
+            if (dataCollector.GetMoves() < 1)
+            {
+                dataCollector.SetStartTime();
+            }
+        }
+
        /* if (Input.GetKeyDown("right"))
         {
             keystroke += 1;
@@ -60,6 +96,7 @@ public class PlayerControllerSphere : MonoBehaviour
     void Move()
     {
         ps.AddForce(new Vector3(x, 0, z) * pushForce);
+
  
     }
 }
