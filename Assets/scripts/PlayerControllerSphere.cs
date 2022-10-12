@@ -22,6 +22,7 @@ public class PlayerControllerSphere : MonoBehaviour
     {
         playerstart = ps.position;
         dataCollector.SetStartTime();
+        dataCollector.SetStartMoveTime();
 
     }
 
@@ -64,10 +65,11 @@ public class PlayerControllerSphere : MonoBehaviour
             Debug.Log("moves before push: " + dataCollector.GetMoves());
             dataCollector.IncrementMoves();
             Debug.Log("moves after push: " + dataCollector.GetMoves());
-            if (dataCollector.GetMoves() < 1)
-            {
-                dataCollector.SetStartTime();
-            }
+            Debug.Log("max move time: " + dataCollector.GetMaxMoveTime());
+           // if (dataCollector.GetMoves() < 1)
+           // {
+          //      dataCollector.SetStartTime();
+           // }
         }
 
        /* if (Input.GetKeyDown("right"))
