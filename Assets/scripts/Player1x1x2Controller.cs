@@ -5,25 +5,31 @@ using UnityEngine;
 
 public class Player1x1x2Controller : MonoBehaviour
 {
-    //private float buttonSensitivity = 0.2f;  //for controller input
-    private float rollDuration = .25f;
-    private bool isRotating = false;
-    // private bool isMoving = false;
+    
+
+    // These describe the postion, size and orientation of the player
     private Rigidbody box;
     Vector3 playerdimenions;
     Vector3 playerstart;
     Quaternion playerstartrotation;
-    float dirX = 0;
-    float dirZ = 0;
-    float rollTime = 0;
-    public DataCollector dataCollector = new DataCollector(); //not monobehavior
-    
-
-    float center = 1; //I guess it's the radius
+    float center = 1; //default so it's not blank, we change it later
     float startAngleRad = 0;
     Vector3 startPosition;          //start position, position is a vector
     Quaternion startRotation;           //angles...nasty quaternion
     Quaternion toRotation;          //nasty nasty quaternion
+
+    //input and rolling variables
+    float dirX = 0;
+    float dirZ = 0;
+    float rollTime = 0;
+    private float rollDuration = .25f;
+    private bool isRotating = false;
+
+    //collector...I maybe did this wrong
+    //public DataCollector dataCollector = new DataCollector(); //not monobehavior
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +39,7 @@ public class Player1x1x2Controller : MonoBehaviour
         playerstartrotation = transform.rotation;
         //DataCollector dataCollector = new DataCollector();
         box = GetComponent<Rigidbody>();
-        dataCollector.SetStartTime();
+        DataCollector.Instance.SetStartTime();
         
    
     }
@@ -43,10 +49,10 @@ public class Player1x1x2Controller : MonoBehaviour
     {
         if (transform.position.y < -5f)
         {
-            dataCollector.IncrementDeaths();
+            DataCollector.Instance.IncrementDeaths();
             transform.position = playerstart;
             transform.rotation = playerstartrotation;
-            Debug.Log("deaths: " + dataCollector.GetDeaths());
+            Debug.Log("deaths: " + DataCollector.Instance.GetDeaths());
         }
         float x = 0;
         float y = 0;
@@ -68,18 +74,18 @@ public class Player1x1x2Controller : MonoBehaviour
             }
         if ( !IsMoving() && (x != 0 || y != 0))
         {
-            Debug.Log("moves before push: " + dataCollector.GetMoves());
-            dataCollector.IncrementMoves();
-            Debug.Log("moves after push: " + dataCollector.GetMoves());
-            if (dataCollector.GetMoves() < 1)
+            Debug.Log("moves before push: " + DataCollector.Instance.GetMoves());
+            DataCollector.Instance.IncrementMoves();
+            Debug.Log("moves after push: " + DataCollector.Instance.GetMoves());
+            if (DataCollector.Instance.GetMoves() < 1)
             {
-                dataCollector.SetStartTime();
+                DataCollector.Instance.SetStartTime();
             }
             dirX = x;    //x direction
             dirZ = y;   //z direction
             startPosition = transform.position;         //starting position
             startRotation = transform.rotation;         //starting rotation
-            transform.Rotate(dirZ * 90, 0, dirX * 90, Space.World);     //90 degree rotate
+            transform.Rotate(dirZ * 90, 0, dirX * 90, Space.World);     //90 degree rotate in whichever direction
             toRotation = transform.rotation;                    //get that rotation point
             transform.rotation = startRotation;             //set the player's rotation back where it started
             setCenterAndAngle();
@@ -91,7 +97,7 @@ public class Player1x1x2Controller : MonoBehaviour
 
     void FixedUpdate() // used for physics to act right even if there's lag and so on that affects Update
     {
-        if (isRotating)
+        if (isRotating)  //this is where the trig and all that fun stuff comes in
         {
             rollTime += Time.fixedDeltaTime;                //increase rotation time by deltatime (inceases at fixedupdate interval)
             float rotationRatio = Mathf.Lerp(0, 1, rollTime / rollDuration);   //lerp makes things look smooth moves the ratio from 0 to 1 at a linear rate of the time/duration ratio
@@ -117,7 +123,7 @@ public class Player1x1x2Controller : MonoBehaviour
 
     bool IsMoving()
     {
-        return (isRotating || !box.IsSleeping());
+        return (isRotating || !box.IsSleeping());  //even if we aren't currently rotating wait for the box to sleep before allowing another move
     }
 
     //this finds the mid point of the 3d rectangle...and the angle it's pointed...

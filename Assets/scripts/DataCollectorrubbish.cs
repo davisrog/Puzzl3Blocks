@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class DataCollector : MonoBehaviour
+public class DataCollectorrubbish : MonoBehaviour    //System.Object  //don't want to attach it to an object, just want it roll with it
 {
-
+/*
     private int moves = 0;
     private DateTime starttime;
     private DateTime endtime;
@@ -18,27 +18,14 @@ public class DataCollector : MonoBehaviour
     // private string suggestions;
     // private string avatar_type;
 
-    private static DataCollector _instance;
+    private static SendToGoogleForm _instance;
 
-    public static DataCollector Instance
+    public static SendToGoogleForm Instance
     {
         get
         {
             return _instance;
         }
-    }
-
-    private void Awake()
-    {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-
     }
 
     public void IncrementMoves()
@@ -63,8 +50,8 @@ public class DataCollector : MonoBehaviour
         }
     }
 
-
-
+        
+    
 
     public TimeSpan GetMaxMoveTime()
     {
@@ -114,7 +101,7 @@ public class DataCollector : MonoBehaviour
 
     public DateTime GetStartTime()
     {
-        return this.starttime;
+       return this.starttime;
     }
 
     public DateTime GetEndTime()
@@ -127,17 +114,17 @@ public class DataCollector : MonoBehaviour
         return this.starttime.Subtract(this.endtime);
     }
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
+*/
 }
-

@@ -20,16 +20,16 @@ public class GoalScript : MonoBehaviour
         {
             Debug.Log("this hit?");
             Debug.Log(component);
-            component.dataCollector.SetEndTime();
-            Debug.Log("starttime: " + component.dataCollector.GetStartTime());
-            Debug.Log("endtime: " + component.dataCollector.GetEndTime());
-            endmoves = component.dataCollector.GetMoves();
-            deltaTime = component.dataCollector.GetDeltaTime();
+            DataCollector.Instance.SetEndTime();
+            Debug.Log("starttime: " + DataCollector.Instance.GetStartTime());
+            Debug.Log("endtime: " + DataCollector.Instance.GetEndTime());
+            endmoves = DataCollector.Instance.GetMoves();
+            deltaTime = DataCollector.Instance.GetDeltaTime();
             deltaTimeToSend = deltaTime.ToString("G");
             Debug.Log("deltatime: " + deltaTimeToSend);
             Debug.Log("timespan: " + deltaTime);
             //deltaTime = deltaTime.ToString();
-            enddeaths = component.dataCollector.GetDeaths();
+            enddeaths = DataCollector.Instance.GetDeaths();
             Debug.Log(endmoves);
 
             SendToGoogleForm.Instance.Send(endmoves, deltaTimeToSend, enddeaths, "hate it", "no suggestions, you suck", "non-cube", "i hate puzzle games");
