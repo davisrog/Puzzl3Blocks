@@ -59,10 +59,4 @@ public class SavePlayerData : MonoBehaviour
         PlayerPrefs.Save();
         Debug.Log("Game data saved!");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

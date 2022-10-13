@@ -22,6 +22,26 @@ public class MainButtnGroup : MonoBehaviour
         
     }
 
+    //Loads character selection screen
+    public void ButtonSelectionScreen() {
+        SceneManager.LoadScene("SelectionScene");
+    }
+    
+    //Loads help screen
+    public void ButtonHelp() {
+        Debug.Log("UNDER CONSTRUCTION");
+    }
+    
+    //Loads continue game
+    public void ButtonContinueGame() {
+        Debug.Log("UNDER CONSTRUCTION");
+    }
+    
+    //Loads continue game
+    public void ButtonLogoEasterEgg() {
+        Debug.Log("UNDER CONSTRUCTION");
+    }
+    
     public void QuitGame()
     {
         Application.Quit(); //This quits the game
