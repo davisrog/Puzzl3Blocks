@@ -519,6 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1705741b1db46e540867610672e1044b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uploadValue: 0
 --- !u!1 &287239432
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +940,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.48235294, g: 0.18431373, b: 0.18431373, a: 1}
+  m_Color: {r: 0.48235294, g: 0.18431373, b: 0.18431373, a: 0}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30

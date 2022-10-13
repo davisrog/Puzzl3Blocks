@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SendButton : MonoBehaviour
 {
@@ -37,13 +38,5 @@ public class SendButton : MonoBehaviour
         SetEasyControl();
         SetAvatarEnjoyment();
         SendToGoogleForm.Instance.Send(0, 0, "null", "null", 0, likegame, suggestions, "null", "null", usability, avatarenjoyment);
-
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
