@@ -15,6 +15,7 @@ public class SendToGoogleForm : MonoBehaviour
     private string ugender = "";
     private string ugameexp = "";
     private string likepuzzlegames = "";
+    public bool uploadValue = false;
 
     //private int moves;
     //private string timeonlevel;
@@ -114,10 +115,19 @@ public class SendToGoogleForm : MonoBehaviour
         else
         {
             Debug.Log("Form upload complete!");
+            SetUploadCompletedStatus();
         }
         www.Dispose(); //have to dispose this or we get a memory leak
     }
 
+    public void SetUploadCompletedStatus() { 
+        uploadValue = true;
+    }
+    
+    public bool GetUploadCompletedStatus() {
+        return uploadValue;
+    }
+    
     public void Send(int moves, int movetooklongest, string timeonlevel, string longestmovetime, int deaths, string likegame, string suggestions, string avatar_type, string level, string usability, string avatarenjoyment)
     {
         //teststring = test.GetComponent<InputField>().text;

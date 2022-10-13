@@ -32,7 +32,7 @@ public class PauseController : MonoBehaviour {
     
     //Loads character selection screen
     public void ButtonBackToMenu() {
-        Debug.Log("UNDER CONSTRUCTION");
+        SceneManager.LoadScene("MainMenu");
     }
     
     //Closes the application 
