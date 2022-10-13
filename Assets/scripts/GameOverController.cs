@@ -25,7 +25,8 @@ public class GameOverController : MonoBehaviour {
     }
     
     public void ButtonGiveFeedback() {
-        Debug.Log("UNDER CONSTRUCTION");
+        UserGameOpinionsController.SetCurrentScreen();
+        SceneManager.LoadScene("UserGameOpinions");
     }
     
     //Closes the application 

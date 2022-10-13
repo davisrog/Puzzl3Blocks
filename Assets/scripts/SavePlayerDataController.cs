@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class SavePlayerDataController : MonoBehaviour {
     // Goes back to Main Menu
-    public void ButtonBackMenu() {
+    public void ButtonSkipMenu() {
         SceneManager.LoadScene("MainMenu");
     }
 }

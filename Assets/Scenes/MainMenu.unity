@@ -1731,7 +1731,7 @@ GameObject:
   - component: {fileID: 1593452415}
   - component: {fileID: 1593452418}
   m_Layer: 5
-  m_Name: SelectCharButtn
+  m_Name: GiveFeedbackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1804,7 +1804,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1593452418}
         m_TargetAssemblyTypeName: MainButtnGroup, Assembly-CSharp
-        m_MethodName: ButtonSelectionScreen
+        m_MethodName: ButtonMenuGiveFeedback
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2125,7 +2125,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SELECT CHARACTER
+  m_text: GIVE FEEDBACK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e2233a51ddaf85b4098dcd22718268cf, type: 2}
   m_sharedMaterial: {fileID: 6688166357435514180, guid: e2233a51ddaf85b4098dcd22718268cf, type: 2}
@@ -2134,8 +2134,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294572541
-  m_fontColor: {r: 0.990566, g: 0.97654855, b: 0.97654855, a: 1}
+    rgba: 4278255609
+  m_fontColor: {r: 0.9752312, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2152,7 +2152,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.9
+  m_fontSize: 25.95
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

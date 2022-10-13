@@ -872,7 +872,6 @@ GameObject:
   - component: {fileID: 215590817}
   - component: {fileID: 215590816}
   - component: {fileID: 215590815}
-  - component: {fileID: 215590814}
   - component: {fileID: 215590813}
   m_Layer: 5
   m_Name: ButtonBack
@@ -914,19 +913,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e1d1a7e8b674e9d8d007ff0d29eb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &215590814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215590811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddd17ee95bbaf418589f8af6ac76b253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputDataElement: {fileID: 0}
 --- !u!114 &215590815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,7 +959,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 215590813}
         m_TargetAssemblyTypeName: SavePlayerDataController, Assembly-CSharp
-        m_MethodName: ButtonBackMenu
+        m_MethodName: ButtonSkipMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

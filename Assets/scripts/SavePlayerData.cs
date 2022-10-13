@@ -22,13 +22,14 @@ public class SavePlayerData : MonoBehaviour
        
     }
 
-    public void ClickSave()
-    {
+    public void ClickSave() {
         SetUserName();
         SetUserAge();
         SetUserGender();
         SetUserGameExperience();
         SaveData();
+        //send to selection screen
+        MainButtnGroup.ButtonSelectionScreen();
     }
 
    public void SetUserName()

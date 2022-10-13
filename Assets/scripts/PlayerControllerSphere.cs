@@ -33,6 +33,7 @@ public class PlayerControllerSphere : MonoBehaviour
         // Check for Game Won
         if (!DataCollector.Instance.GetLives().Equals(0) && SendToGoogleForm.Instance.GetUploadCompletedStatus().Equals(true)) { 
             SceneManager.LoadScene("GameWinScreen"); 
+            SendToGoogleForm.Instance.SetUploadCompletedStatus(false);
         }
         //Check for Game Over
         if (DataCollector.Instance.GetLives().Equals(0)) { 

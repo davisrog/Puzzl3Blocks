@@ -115,13 +115,13 @@ public class SendToGoogleForm : MonoBehaviour
         else
         {
             Debug.Log("Form upload complete!");
-            SetUploadCompletedStatus();
+            SetUploadCompletedStatus(true);
         }
         www.Dispose(); //have to dispose this or we get a memory leak
     }
 
-    public void SetUploadCompletedStatus() { 
-        uploadValue = true;
+    public void SetUploadCompletedStatus(bool value) {
+        uploadValue = value;
     }
     
     public bool GetUploadCompletedStatus() {
