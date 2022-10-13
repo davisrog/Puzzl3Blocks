@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Player1x1x2Controller : MonoBehaviour
@@ -47,6 +48,14 @@ public class Player1x1x2Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check for Game Won
+        if (!DataCollector.Instance.GetLives().Equals(0) && SendToGoogleForm.Instance.GetUploadCompletedStatus().Equals(true)) { 
+            SceneManager.LoadScene("GameWinScreen"); 
+        }
+        //Check for Game Over
+        if (DataCollector.Instance.GetLives().Equals(0)) { 
+            SceneManager.LoadScene("GameOverScreen");
+        }
         if (transform.position.y < -5f)
         {
             DataCollector.Instance.IncrementDeaths();

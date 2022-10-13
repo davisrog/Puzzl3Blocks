@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllerSphere : MonoBehaviour
 {
@@ -29,6 +30,14 @@ public class PlayerControllerSphere : MonoBehaviour
     // Update is called once per frame good for receiving inputs
     void Update()
     {
+        // Check for Game Won
+        if (!DataCollector.Instance.GetLives().Equals(0) && SendToGoogleForm.Instance.GetUploadCompletedStatus().Equals(true)) { 
+            SceneManager.LoadScene("GameWinScreen"); 
+        }
+        //Check for Game Over
+        if (DataCollector.Instance.GetLives().Equals(0)) { 
+            SceneManager.LoadScene("GameOverScreen");
+        }
         if (transform.position.y < -5f)  //death
         {
             DataCollector.Instance.IncrementDeaths();
