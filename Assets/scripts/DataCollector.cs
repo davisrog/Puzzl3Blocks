@@ -7,6 +7,7 @@ public class DataCollector : MonoBehaviour
 {
 
     private int moves = 0;
+    private int movetooklongest = 0;
     private DateTime starttime;
     private DateTime endtime;
     private DateTime startmovetime;
@@ -46,8 +47,9 @@ public class DataCollector : MonoBehaviour
         this.moves += 1;
         if (this.moves == 1)
         {
-            this.maxmovetime = GetMoveTime();
+            //this.maxmovetime = GetMoveTime();
             SetStartMoveTime();
+            this.movetooklongest = this.moves;
         }
         else if (this.moves > 1)
         {
@@ -55,6 +57,7 @@ public class DataCollector : MonoBehaviour
             {
                 this.maxmovetime = GetMoveTime();
                 SetStartMoveTime();
+                this.movetooklongest = this.moves;
             }
             else
             {
@@ -63,7 +66,10 @@ public class DataCollector : MonoBehaviour
         }
     }
 
-
+    public int GetMoveTookLongest()
+    {
+        return this.movetooklongest;
+    }
 
 
     public TimeSpan GetMaxMoveTime()

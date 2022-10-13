@@ -6,11 +6,15 @@ using System;
 
 public class GoalSphereScript : MonoBehaviour
 {
-    
+
     private int endmoves = 0;
     private int enddeaths = 0;
+    private int movetooklongest = 0;
+    private TimeSpan longesttimemove;
+    private string longesttimemoveToSend;
     private TimeSpan deltaTime;
     private string deltaTimeToSend;
+    string currentScene;
     //SendToGoogleForm sendtoGoogleForm;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
@@ -25,15 +29,19 @@ public class GoalSphereScript : MonoBehaviour
             Debug.Log("starttime: " + DataCollector.Instance.GetStartTime());
             Debug.Log("endtime: " + DataCollector.Instance.GetEndTime());
             endmoves = DataCollector.Instance.GetMoves();
+            movetooklongest = DataCollector.Instance.GetMoveTookLongest();
             deltaTime = DataCollector.Instance.GetDeltaTime();
             deltaTimeToSend = deltaTime.ToString("G");
+            longesttimemove = DataCollector.Instance.GetMaxMoveTime();
+            longesttimemoveToSend = longesttimemove.ToString("G");
             Debug.Log("deltatime: " + deltaTimeToSend);
             Debug.Log("timespan: " + deltaTime);
+            currentScene = SceneManager.GetActiveScene().name;
             //deltaTime = deltaTime.ToString();
             enddeaths = DataCollector.Instance.GetDeaths();
             Debug.Log(endmoves);
 
-            SendToGoogleForm.Instance.Send(endmoves, deltaTimeToSend, enddeaths, "hate it", "no suggestions, you suck", "sphere", "i hate puzzle games");
+            SendToGoogleForm.Instance.Send(endmoves, movetooklongest, deltaTimeToSend, longesttimemoveToSend, enddeaths, "tell you later", "tesll you later", "non-cube", currentScene);
 
         }
 

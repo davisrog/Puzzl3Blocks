@@ -11,6 +11,7 @@ public class SavePlayerData : MonoBehaviour
     string userAge = "";
     string userGender = "";
     string userGameExperience = "";
+    string userPuzzleGameEnjoyment = "";
     //public TMP_InputField InputField;
    // public string theName;
     //public GameObject inputField;
@@ -50,12 +51,17 @@ public class SavePlayerData : MonoBehaviour
         userGameExperience = GameObject.Find("userGameExperience").GetComponent<TMP_InputField>().text;
     }
 
+    public void SetUserPuzzleGameEnjoyment()
+    {
+        userPuzzleGameEnjoyment = GameObject.Find("userPuzzleGameEnjoyment").GetComponent<TMP_InputField>().text;
+    }
     public void SaveData()
     {
         PlayerPrefs.SetString("UserName", username);
         PlayerPrefs.SetString("UserAge", userAge);
         PlayerPrefs.SetString("UserGender", userGender);
         PlayerPrefs.SetString("UserGameExp", userGameExperience);
+        PlayerPrefs.SetString("UserPuzzleGameEnjoyment", userPuzzleGameEnjoyment);
         PlayerPrefs.Save();
         Debug.Log("Game data saved!");
     }

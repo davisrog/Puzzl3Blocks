@@ -74,9 +74,10 @@ public class Player1x1x2Controller : MonoBehaviour
             }
         if ( !IsMoving() && (x != 0 || y != 0))
         {
-            Debug.Log("moves before push: " + DataCollector.Instance.GetMoves());
+            //Debug.Log("move time: " + DataCollector.Instance.GetMoveTime());
+           // Debug.Log("max move time: " + DataCollector.Instance.GetMaxMoveTime());
             DataCollector.Instance.IncrementMoves();
-            Debug.Log("moves after push: " + DataCollector.Instance.GetMoves());
+            //Debug.Log("moves after push: " + DataCollector.Instance.GetMoves());
             if (DataCollector.Instance.GetMoves() < 1)
             {
                 DataCollector.Instance.SetStartTime();
