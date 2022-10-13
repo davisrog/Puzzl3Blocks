@@ -71,7 +71,7 @@ public class SendToGoogleForm : MonoBehaviour
     }
 
     //IEnumerator Post(string uname, string uage, string ugender, string ugameexp, int moves, string timeonlevel, int deaths, string likegame, string suggestions, string avatar_type, string likepuzzlegames)
-    IEnumerator Post(int moves, int movetooklongest, string timeonlevel, string longestmovetime, int deaths, string likegame, string suggestions, string avatar_type, string level)
+    IEnumerator Post(int moves, int movetooklongest, string timeonlevel, string longestmovetime, int deaths, string likegame, string suggestions, string avatar_type, string level, string usability, string avatarenjoyment)
     {
         WWWForm form = new WWWForm();
         // timeonlevel = timeonlevel.ToString(@"hh\:mm\:ss");
@@ -87,16 +87,18 @@ public class SendToGoogleForm : MonoBehaviour
         //game tracks
         form.AddField("entry.1234682582", moves);
         form.AddField("entry.1847608362", movetooklongest);
-
         form.AddField("entry.1738161824", timeonlevel);
         form.AddField("entry.732788725", longestmovetime);
         form.AddField("entry.1758611915", deaths);
 
+        form.AddField("entry.746764486", avatar_type);
+        form.AddField("entry.1848091046", level);
+
         //user provides after playing
         form.AddField("entry.1147099413", likegame);
         form.AddField("entry.1912895330", suggestions);
-        form.AddField("entry.746764486", avatar_type);
-        form.AddField("entry.1848091046", level);
+        form.AddField("entry.2089192605", usability);
+        form.AddField("entry.848010228", avatarenjoyment);
 
 
 
@@ -116,14 +118,14 @@ public class SendToGoogleForm : MonoBehaviour
         www.Dispose(); //have to dispose this or we get a memory leak
     }
 
-    public void Send(int moves, int movetooklongest, string timeonlevel, string longestmovetime, int deaths, string likegame, string suggestions, string avatar_type, string level)
+    public void Send(int moves, int movetooklongest, string timeonlevel, string longestmovetime, int deaths, string likegame, string suggestions, string avatar_type, string level, string usability, string avatarenjoyment)
     {
         //teststring = test.GetComponent<InputField>().text;
         /* moves = dataCollector.GetMoves();
          deaths = dataCollector.GetDeaths();
          timeonlevel = dataCollector.GetDeltaTime();
  */
-        StartCoroutine(Post(moves, movetooklongest, timeonlevel, longestmovetime, deaths, likegame, suggestions, avatar_type, level));
+        StartCoroutine(Post(moves, movetooklongest, timeonlevel, longestmovetime, deaths, likegame, suggestions, avatar_type, level, usability, avatarenjoyment));
        // StartCoroutine(Post(uname, uage, ugender, ugameexp, moves, timeonlevel, deaths, likegame, suggestions, avatar_type, likepuzzlegames));
     }
 }

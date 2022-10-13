@@ -40,7 +40,7 @@ public class GoalScript : MonoBehaviour
             enddeaths = DataCollector.Instance.GetDeaths();
             Debug.Log(endmoves);
 
-            SendToGoogleForm.Instance.Send(endmoves, movetooklongest, deltaTimeToSend, longesttimemoveToSend, enddeaths, "tell you later", "tesll you later", "non-cube", currentScene);
+            SendToGoogleForm.Instance.Send(endmoves, movetooklongest, deltaTimeToSend, longesttimemoveToSend, enddeaths, "n/a", "n/a", "non-cube", currentScene, "n/a", "n/a");
 
         }
 
