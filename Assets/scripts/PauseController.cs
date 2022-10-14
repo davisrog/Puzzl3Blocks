@@ -4,39 +4,39 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseController : MonoBehaviour {
-    //Loads character selection screen
+    
+    private static int lastLevel;
+
+    //TODO: Create navigation controller and model. Move model methods out of controller
+    public static void SetLastLevel() {
+        lastLevel = SceneManager.GetActiveScene().buildIndex;
+    }
+     
+    //TODO: Create navigation controller and model. Move model methods out of controller
+    public static int GetLastLevel() {
+        return lastLevel;
+    }
+    
+    //Loads pause screen
     public void ButtonPauseScreen() {
+        SetLastLevel();
         SceneManager.LoadScene("PauseScene");
     }
     
     //Loads character selection screen
     public void ButtonResumeGame() {
         Debug.Log("UNDER CONSTRUCTION");
+        SceneManager.LoadScene(GetLastLevel());
     }
     
-    //Loads character selection screen
+    //puts user back on previous screen
     public void ButtonNewGame() {
-        // if (!SelectionModel.GetLevelMap().Equals("Not Unlocked")) {
-        //     SceneManager.LoadScene(SelectionModel.StartGameActivated());
-        // } else {
-        //     Debug.Log("Level under construction");
-        // }
-        
-        //TODO 
-        //if current level equals this go to that
-        // SceneManager.LoadScene("Level1");
-        // SceneManager.LoadScene("Level2");
-        // SceneManager.LoadScene("Level4");
-        // SceneManager.LoadScene("Level5");
-        
-        
-        Debug.Log("UNDER CONSTRUCTION");
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(GetLastLevel());
     }
     
     //Loads character selection screen
     public void ButtonControlsScreen() {
-        Debug.Log("UNDER CONSTRUCTION");
+        SceneManager.LoadScene("ControlsScene");
     }
     
     //Loads character selection screen

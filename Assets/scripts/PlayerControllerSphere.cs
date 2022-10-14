@@ -32,11 +32,13 @@ public class PlayerControllerSphere : MonoBehaviour
     {
         // Check for Game Won
         if (!DataCollector.Instance.GetLives().Equals(0) && SendToGoogleForm.Instance.GetUploadCompletedStatus().Equals(true)) { 
+            GameOverController.SetLevelScene();
             SceneManager.LoadScene("GameWinScreen"); 
             SendToGoogleForm.Instance.SetUploadCompletedStatus(false);
         }
         //Check for Game Over
         if (DataCollector.Instance.GetLives().Equals(0)) { 
+            GameOverController.SetLevelScene();
             SceneManager.LoadScene("GameOverScreen");
         }
         if (transform.position.y < -5f)  //death

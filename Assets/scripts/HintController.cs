@@ -6,16 +6,12 @@ using UnityEngine.SceneManagement;
 public class HintController : MonoBehaviour {
     
     public void ButtonHintScreen() {
+        PauseController.SetLastLevel();
         SceneManager.LoadScene("HintScene");
     }
     
     public void ButtonResumeGameHintScreen() {
-        // if (!SelectionModel.GetLevelMap().Equals("Not Unlocked")) {
-        //     SceneManager.LoadScene(SelectionModel.StartGameActivated());
-        // } else {
-        //     Debug.Log("Level under construction");
-        // }
         Debug.Log("UNDER CONSTRUCTION");
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(PauseController.GetLastLevel());
     }
 }
