@@ -12,12 +12,6 @@ public class Timer : MonoBehaviour
     public float currentTime;
     //public float countUp;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public float GetCurrentTime()
     {
         return currentTime;
@@ -26,8 +20,8 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Icrease count
+        //Increase count
         currentTime = currentTime += Time.deltaTime;
-        timerText.text = currentTime.ToString("0.00"); //Convert timer to show seconds in 0.00 fromat
+        timerText.text = currentTime.ToString("0.00"); //Convert timer to show seconds in 0.00 format
     }
 }

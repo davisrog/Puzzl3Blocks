@@ -19,7 +19,7 @@ public class UserGameOpinionsController : MonoBehaviour
          currentScreen = SceneManager.GetActiveScene().buildIndex;
      }
      
-     public int GetCurrentScreen() {
+     public static int GetCurrentScreen() {
          return currentScreen;
      }
 
