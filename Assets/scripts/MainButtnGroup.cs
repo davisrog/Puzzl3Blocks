@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,7 +24,7 @@ public class MainButtnGroup : MonoBehaviour
     
     //Loads help screen
     public void ButtonHelp() {
-        Debug.Log("UNDER CONSTRUCTION");
+        SceneManager.LoadScene("HelpScene");
     }
     
     //loads feedback page
@@ -35,6 +36,13 @@ public class MainButtnGroup : MonoBehaviour
     //Loads continue game
     public void ButtonContinueGame() {
         Debug.Log("UNDER CONSTRUCTION");
+        Debug.Log(PauseController.GetLastLevel());
+        Debug.Log(GameOverController.GetLevelScene());
+        if (!PauseController.GetLastLevel().Equals(0)) {
+            SceneManager.LoadScene(PauseController.GetLastLevel());
+        } else {
+            SceneManager.LoadScene(GameOverController.GetLevelScene());
+        }
     }
     
     //Loads continue game
