@@ -351,7 +351,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I believe in you! Try harder! <3
+  m_text: '*UNDER CONSTRUCTION*
+
+
+    I believe in you! Try harder! <3'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e2233a51ddaf85b4098dcd22718268cf, type: 2}
   m_sharedMaterial: {fileID: 6688166357435514180, guid: e2233a51ddaf85b4098dcd22718268cf, type: 2}
@@ -385,7 +388,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
