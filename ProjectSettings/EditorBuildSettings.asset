@@ -21,14 +21,8 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectionScene.unity
     guid: 3ae010d172aad487fa81ace5b531795e
   - enabled: 1
-    path: Assets/Scenes/GameWinScreen.unity
-    guid: 9478090b493314e44848a19ab833c908
-  - enabled: 1
     path: Assets/Scenes/HintScene.unity
     guid: 2895e919631a24f3d91e2e509df2e83c
-  - enabled: 1
-    path: Assets/Scenes/GameOverScreen.unity
-    guid: 56e1cfeed0d574eeebdd53e5671d6c79
   - enabled: 1
     path: Assets/Scenes/UserGameOpinions.unity
     guid: 537226c1a40ac5845915aa0dc381e61a
