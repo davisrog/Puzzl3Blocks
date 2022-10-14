@@ -11,8 +11,9 @@ public class GameOverController : MonoBehaviour {
 
     //Loads character selection screen
     public void ButtonStartGameOver() {
-        Debug.Log("UNDER CONSTRUCTION");
-        SceneManager.LoadScene("Level1");
+        //TODO: fix for all levels
+        UserGameOpinionsController.SetCurrentScreen();
+        SceneManager.LoadScene(UserGameOpinionsController.GetCurrentScreen());
     }
 
     //Loads character selection screen

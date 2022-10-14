@@ -21,6 +21,15 @@ public class PauseController : MonoBehaviour {
         // } else {
         //     Debug.Log("Level under construction");
         // }
+        
+        //TODO 
+        //if current level equals this go to that
+        // SceneManager.LoadScene("Level1");
+        // SceneManager.LoadScene("Level2");
+        // SceneManager.LoadScene("Level4");
+        // SceneManager.LoadScene("Level5");
+        
+        
         Debug.Log("UNDER CONSTRUCTION");
         SceneManager.LoadScene("Level1");
     }
