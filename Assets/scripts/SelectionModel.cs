@@ -50,7 +50,7 @@ public class SelectionModel : MonoBehaviour {
         if (CharacterAvailable().Equals(true)) {
             switch (inputValue) {
                 case 0:
-                    characterSelected = "Square";
+                    characterSelected = "Block";
                     SetCharacter(characterSelected);
                     break;
                 case 1:
@@ -86,7 +86,7 @@ public class SelectionModel : MonoBehaviour {
     public static string StartGameActivated() {
        //TODO: START GAME! AND TIMER
        switch (GetCharacter()) {
-           case "Square":
+           case "Block":
                SetLevelMap("Level1");
                break;
            case "Circle":
