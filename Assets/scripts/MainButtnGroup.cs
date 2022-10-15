@@ -50,8 +50,17 @@ public class MainButtnGroup : MonoBehaviour
         Debug.Log("UNDER CONSTRUCTION");
     }
     
-    public void QuitGame()
-    {
+    public void QuitGame() {
+        DataCollector.Instance.IncrementQuits();
+        Debug.Log(DataCollector.Instance.GetQuits());
+        SendToGoogleForm.Instance.Send(DataCollector.Instance.GetMoves(), 
+            DataCollector.Instance.GetMoveTookLongest(), 
+            DataCollector.Instance.GetDeltaTime().ToString("G"), 
+            DataCollector.Instance.GetMaxMoveTime().ToString("G"), 
+            DataCollector.Instance.GetDeaths(), DataCollector.Instance.GetHints(), 
+            "n/a", "n/a", "non-cube", 
+            SceneManager.GetActiveScene().name, 
+            "n/a", "n/a");
         Application.Quit(); //This quits the game
     }
 }
