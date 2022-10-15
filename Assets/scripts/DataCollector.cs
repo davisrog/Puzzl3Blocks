@@ -15,6 +15,7 @@ public class DataCollector : MonoBehaviour
     private TimeSpan maxmovetime;
     private int deaths = 0;
     private int lives = 5;
+    private int hints = 0;
     // private string likegame;
     // private string suggestions;
     // private string avatar_type;
@@ -38,6 +39,7 @@ public class DataCollector : MonoBehaviour
         else
         {
             _instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
     }
@@ -49,6 +51,7 @@ public class DataCollector : MonoBehaviour
         {
             //this.maxmovetime = GetMoveTime();
             SetStartMoveTime();
+            this.maxmovetime = GetMoveTime();
             this.movetooklongest = this.moves;
         }
         else if (this.moves > 1)
@@ -76,6 +79,8 @@ public class DataCollector : MonoBehaviour
     {
         return this.maxmovetime;
     }
+
+  
 
     public void IncrementDeaths()
     {
@@ -133,6 +138,25 @@ public class DataCollector : MonoBehaviour
         return this.starttime.Subtract(this.endtime);
     }
 
+    public void IncrementHints()
+    {
+        this.hints += 1;
+    }
+
+    public int GetHints()
+    {
+        return this.hints;
+    }
+
+    public void ResetHints()
+    {
+        this.hints = 0;
+    }
+
+    public void ResetMoves()
+    {
+        this.moves = 0;
+    }
 
     // Start is called before the first frame update
     void Start()

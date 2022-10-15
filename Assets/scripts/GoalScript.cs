@@ -8,6 +8,7 @@ public class GoalScript : MonoBehaviour
 {
     private int endmoves = 0;
     private int enddeaths = 0;
+    private int hints = 0;
     private int movetooklongest = 0;
     private TimeSpan longesttimemove;
     private string longesttimemoveToSend;
@@ -38,9 +39,12 @@ public class GoalScript : MonoBehaviour
             currentScene = SceneManager.GetActiveScene().name;
             //deltaTime = deltaTime.ToString();
             enddeaths = DataCollector.Instance.GetDeaths();
+            hints = DataCollector.Instance.GetHints();
+            DataCollector.Instance.ResetHints();
+            DataCollector.Instance.ResetMoves();
             Debug.Log(endmoves);
 
-            SendToGoogleForm.Instance.Send(endmoves, movetooklongest, deltaTimeToSend, longesttimemoveToSend, enddeaths, "n/a", "n/a", "non-cube", currentScene, "n/a", "n/a");
+            SendToGoogleForm.Instance.Send(endmoves, movetooklongest, deltaTimeToSend, longesttimemoveToSend, enddeaths, hints, "n/a", "n/a", "non-cube", currentScene, "n/a", "n/a");
         }
     }
 }

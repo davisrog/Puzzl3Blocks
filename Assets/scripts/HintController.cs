@@ -7,6 +7,8 @@ public class HintController : MonoBehaviour {
     
     public void ButtonHintScreen() {
         PauseController.SetLastLevel();
+        DataCollector.Instance.IncrementHints();
+        Debug.Log(DataCollector.Instance.GetHints());
         SceneManager.LoadScene("HintScene");
     }
     

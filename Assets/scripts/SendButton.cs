@@ -37,6 +37,6 @@ public class SendButton : MonoBehaviour
         SetSuggestions();
         SetEasyControl();
         SetAvatarEnjoyment();
-        SendToGoogleForm.Instance.Send(0, 0, "null", "null", 0, likegame, suggestions, "null", "null", usability, avatarenjoyment);
+        SendToGoogleForm.Instance.Send(0, 0, "null", "null", 0, 0, likegame, suggestions, "null", "null", usability, avatarenjoyment);
     }
 }
