@@ -172,6 +172,12 @@ public class DataCollector : MonoBehaviour
         this.moves = 0;
     }
 
+    public void ResetOnQuitToMain()
+    {
+        ResetMoves();
+        ResetHints();
+        SetLives();
+    }
     // Start is called before the first frame update
     void Start()
     {

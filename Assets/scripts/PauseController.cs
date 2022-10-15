@@ -33,6 +33,7 @@ public class PauseController : MonoBehaviour {
     public void ButtonNewGame() {
         Debug.Log("UNDER CONSTRUCTION");
         DataCollector.Instance.SetLives();
+        DataCollector.Instance.ResetMoves();
         SceneManager.LoadScene(GetLastLevel());
     }
     
@@ -45,7 +46,7 @@ public class PauseController : MonoBehaviour {
     public void ButtonBackToMenu() {
         DataCollector.Instance.IncrementQuits();
         Debug.Log(DataCollector.Instance.GetQuits());
-        DataCollector.Instance.SetLives();
+       // DataCollector.Instance.ResetOnQuitToMain();
         SceneManager.LoadScene("MainMenu");
     }
     

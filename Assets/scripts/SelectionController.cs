@@ -22,7 +22,12 @@ public class SelectionController : MonoBehaviour {
         if (inputValue == "Start") {
             Debug.Log(SelectionModel.StartGameActivated());
             if (!SelectionModel.GetLevelMap().Equals("Not Unlocked")) {
+                if (GameObject.Find("DataCollector")){
+                    DataCollector.Instance.ResetOnQuitToMain();
+                    Debug.Log("reset called on DataCollector");
+                }
                 SceneManager.LoadScene(SelectionModel.StartGameActivated());
+
             } else {
                 Debug.Log("Level under construction");
             }
@@ -103,6 +108,7 @@ public class SelectionController : MonoBehaviour {
     
     // When button is pressed record input for Start
     public void ButtonStart() {
+        
         ButtonGuard("Start");
     }
     
