@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class HintController : MonoBehaviour {
     
     public void ButtonHintScreen() {
+        Debug.Log("hint button hit");
         PauseController.SetLastLevel();
         DataCollector.Instance.IncrementHints();
         Debug.Log(DataCollector.Instance.GetHints());
