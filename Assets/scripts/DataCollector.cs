@@ -102,6 +102,11 @@ public class DataCollector : MonoBehaviour
     {
         return this.lives;
     }
+    
+    public void SetLives() {
+        this.deaths = 0;
+        this.lives = 5;
+    }
 
     public void SetStartMoveTime()
     {

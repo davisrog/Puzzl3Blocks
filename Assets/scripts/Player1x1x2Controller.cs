@@ -57,6 +57,7 @@ public class Player1x1x2Controller : MonoBehaviour
         //Check for Game Over
         if (DataCollector.Instance.GetLives().Equals(0)) {
             GameOverController.SetLevelScene();
+            DataCollector.Instance.SetLives();
             SceneManager.LoadScene("GameOverScreen");
         }
         if (transform.position.y < -5f)
