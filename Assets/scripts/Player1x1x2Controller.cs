@@ -65,6 +65,7 @@ public class Player1x1x2Controller : MonoBehaviour
             DataCollector.Instance.IncrementDeaths();
             transform.position = playerstart;
             transform.rotation = playerstartrotation;
+            Debug.Log("lives: " + DataCollector.Instance.GetLives());
             Debug.Log("deaths: " + DataCollector.Instance.GetDeaths());
         }
         float x = 0;

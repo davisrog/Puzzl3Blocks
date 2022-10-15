@@ -53,4 +53,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HelpScene.unity
     guid: f1f473a4848a64939b74416c0a822418
+  - enabled: 1
+    path: Assets/Scenes/SphereLevel2.unity
+    guid: fe1d7a16cf685784db08b2de239f4399
+  - enabled: 1
+    path: Assets/Scenes/SphereLevel3.unity
+    guid: 45483eeee80272442b201c6a8417b4b1
+  - enabled: 1
+    path: Assets/Scenes/SphereLevel4.unity
+    guid: 7319fe3fbf7f09e45870bab8a3c995b4
+  - enabled: 1
+    path: Assets/Scenes/SphereLevel5.unity
+    guid: c35e6ecf9e1c51e4d8646fee34330c72
   m_configObjects: {}

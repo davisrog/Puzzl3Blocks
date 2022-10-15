@@ -42,29 +42,26 @@ public class PlayerControllerSphere : MonoBehaviour
             DataCollector.Instance.SetLives();
             SceneManager.LoadScene("GameOverScreen");
         }
-        if (transform.position.y < -5f)  //death
-        {
-            DataCollector.Instance.IncrementDeaths();
-            ps.velocity = Vector3.zero;
-            ps.angularVelocity = Vector3.zero;
-           // Debug.Log(ps.angularVelocity);
-           // Debug.Log(ps.velocity);
-
-            ps.position = playerstart;
-           // Debug.Log("playerstart: " + playerstart);
-           // Debug.Log("position: " + ps.position);
-            //ps.rotation = playerstartrotation;
-            Debug.Log("deaths: " + DataCollector.Instance.GetDeaths());
-           // ps.velocity = Vector3.zero;
-           // ps.angularVelocity = Vector3.zero;
-        }
-
+  
         ProcessKeys();   
 
     }
 
+
+
     void FixedUpdate() // used for physics to act right even if there's lag and so on that may affect Update
     {
+        if (transform.position.y < -5f)  //death -- was counting twice when I had it in Update
+        {
+
+            ps.velocity = Vector3.zero;
+            ps.angularVelocity = Vector3.zero;
+            ps.position = playerstart;
+
+            DataCollector.Instance.IncrementDeaths();
+
+        }
+
         Move();
     }
 
@@ -75,10 +72,10 @@ public class PlayerControllerSphere : MonoBehaviour
 
         if (Input.GetKeyDown("right") || Input.GetKeyDown("left") || Input.GetKeyDown("down") || Input.GetKeyDown("up"))
         {
-            Debug.Log("moves before push: " + DataCollector.Instance.GetMoves());
+            //Debug.Log("moves before push: " + DataCollector.Instance.GetMoves());
             DataCollector.Instance.IncrementMoves();
-            Debug.Log("moves after push: " + DataCollector.Instance.GetMoves());
-            Debug.Log("max move time: " + DataCollector.Instance.GetMaxMoveTime());
+           // Debug.Log("moves after push: " + DataCollector.Instance.GetMoves());
+           // Debug.Log("max move time: " + DataCollector.Instance.GetMaxMoveTime());
            // if (dataCollector.GetMoves() < 1)
            // {
           //      dataCollector.SetStartTime();

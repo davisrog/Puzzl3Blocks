@@ -43,6 +43,19 @@ public class GameOverController : MonoBehaviour {
         else if (GetLevelScene().Equals(11)) {
             SceneManager.LoadScene("Level5");
         }
+        //sphere levels
+        else if (GetLevelScene().Equals(2)){
+            SceneManager.LoadScene("SphereLevel2");
+        }
+        else if (GetLevelScene().Equals(16)){
+            SceneManager.LoadScene("SphereLevel3");
+        }
+        else if (GetLevelScene().Equals(17)){
+            SceneManager.LoadScene("SphereLevel4");
+        }
+                else if (GetLevelScene().Equals(18)){
+            SceneManager.LoadScene("SphereLevel5");
+        }
         else {
             DataCollector.Instance.SetLives();
             SceneManager.LoadScene("MainMenu");
