@@ -16,6 +16,7 @@ public class DataCollector : MonoBehaviour
     private int deaths = 0;
     private int lives = 5;
     private int hints = 0;
+    private int quits = 0;
     // private string likegame;
     // private string suggestions;
     // private string avatar_type;
@@ -151,6 +152,14 @@ public class DataCollector : MonoBehaviour
     public int GetHints()
     {
         return this.hints;
+    }
+    
+    public void IncrementQuits() {
+        this.quits += 1;
+    }
+
+    public int GetQuits() {
+        return this.quits;
     }
 
     public void ResetHints()

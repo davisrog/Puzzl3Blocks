@@ -43,12 +43,24 @@ public class PauseController : MonoBehaviour {
     
     //Loads character selection screen
     public void ButtonBackToMenu() {
+        DataCollector.Instance.IncrementQuits();
+        Debug.Log(DataCollector.Instance.GetQuits());
         DataCollector.Instance.SetLives();
         SceneManager.LoadScene("MainMenu");
     }
     
     //Closes the application 
     public void ButtonQuitScreen() {
+        DataCollector.Instance.IncrementQuits();
+        Debug.Log(DataCollector.Instance.GetQuits());
+        SendToGoogleForm.Instance.Send(DataCollector.Instance.GetMoves(), 
+            DataCollector.Instance.GetMoveTookLongest(), 
+            DataCollector.Instance.GetDeltaTime().ToString("G"), 
+            DataCollector.Instance.GetMaxMoveTime().ToString("G"), 
+            DataCollector.Instance.GetDeaths(), DataCollector.Instance.GetHints(), 
+            "n/a", "n/a", "non-cube", 
+            SceneManager.GetActiveScene().name, 
+            "n/a", "n/a");      
         Application.Quit(); 
     }
     
