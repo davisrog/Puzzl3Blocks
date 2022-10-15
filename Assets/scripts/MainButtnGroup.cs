@@ -10,7 +10,11 @@ public class MainButtnGroup : MonoBehaviour
         if (PlayerPrefs.GetString("UserName") == "" || PlayerPrefs.GetString("UserGender") == "" || PlayerPrefs.GetString("UserAge") == "" || PlayerPrefs.GetString("UserGameExp") == "") {
             //this asks for player information before they start...we don't really need their name, looks like there's a unique userid that unity assigns in the registry that we can get
             SceneManager.LoadScene("UserDataMenu");
-        } else { 
+        } else {
+            Debug.Log(PlayerPrefs.GetString("UserName"));
+            Debug.Log(PlayerPrefs.GetString("UserGender"));
+            Debug.Log(PlayerPrefs.GetString("UserAge"));
+            Debug.Log(PlayerPrefs.GetString("UserGameExp"));
             ButtonSelectionScreen();
         }
         //SceneManager.LoadScene(1); //Loads by build index
@@ -51,16 +55,26 @@ public class MainButtnGroup : MonoBehaviour
     }
     
     public void QuitGame() {
-        DataCollector.Instance.IncrementQuits();
-        Debug.Log(DataCollector.Instance.GetQuits());
-        SendToGoogleForm.Instance.Send(DataCollector.Instance.GetMoves(), 
-            DataCollector.Instance.GetMoveTookLongest(), 
-            DataCollector.Instance.GetDeltaTime().ToString("G"), 
-            DataCollector.Instance.GetMaxMoveTime().ToString("G"), 
-            DataCollector.Instance.GetDeaths(), DataCollector.Instance.GetHints(), 
-            "n/a", "n/a", "non-cube", 
-            SceneManager.GetActiveScene().name, 
-            "n/a", "n/a");
-        Application.Quit(); //This quits the game
+        Debug.Log("exit pressed");
+        if (GameObject.Find("DataCollector"))
+        {
+            DataCollector.Instance.IncrementQuits();
+            Debug.Log(DataCollector.Instance.GetQuits());
+            SendToGoogleForm.Instance.Send(DataCollector.Instance.GetMoves(),
+                DataCollector.Instance.GetMoveTookLongest(),
+                DataCollector.Instance.GetDeltaTime().ToString("G"),
+                DataCollector.Instance.GetMaxMoveTime().ToString("G"),
+                DataCollector.Instance.GetDeaths(), DataCollector.Instance.GetHints(),
+                "n/a", "n/a", "non-cube",
+                SceneManager.GetActiveScene().name,
+                "n/a", "n/a");
+            Application.Quit(); //This quits the game
+        }
+        else
+        {
+            SendToGoogleForm.Instance.Send(-1, -1, "undefined", "undefined", -1, -1, "n/a", "n/a", "n/a", 
+                SceneManager.GetActiveScene().name, "n/a", "n/a");
+            Application.Quit();
+        }
     }
 }
