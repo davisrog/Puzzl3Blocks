@@ -31,6 +31,8 @@ public class PauseController : MonoBehaviour {
     
     //puts user back on previous screen
     public void ButtonNewGame() {
+        Debug.Log("UNDER CONSTRUCTION");
+        DataCollector.Instance.SetLives();
         SceneManager.LoadScene(GetLastLevel());
     }
     
@@ -41,6 +43,7 @@ public class PauseController : MonoBehaviour {
     
     //Loads character selection screen
     public void ButtonBackToMenu() {
+        DataCollector.Instance.SetLives();
         SceneManager.LoadScene("MainMenu");
     }
     

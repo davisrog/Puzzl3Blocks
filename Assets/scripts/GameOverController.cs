@@ -42,6 +42,7 @@ public class GameOverController : MonoBehaviour {
             SceneManager.LoadScene("Level5");
         }
         else {
+            DataCollector.Instance.SetLives();
             SceneManager.LoadScene("MainMenu");
         }
     }
