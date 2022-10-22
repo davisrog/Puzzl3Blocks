@@ -70,6 +70,20 @@ public class PlayerControllerSphere : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            // ps.velocity = Vector3.zero;
+            // ps.angularVelocity = Vector3.zero;
+            if (ps.drag < 20)
+            {
+                ps.drag += 5;
+            }
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            ps.drag = 0;
+        }
+
         if (Input.GetKeyDown("right") || Input.GetKeyDown("left") || Input.GetKeyDown("down") || Input.GetKeyDown("up"))
         {
             //Debug.Log("moves before push: " + DataCollector.Instance.GetMoves());
@@ -82,28 +96,7 @@ public class PlayerControllerSphere : MonoBehaviour
            // }
         }
 
-       /* if (Input.GetKeyDown("right"))
-        {
-            keystroke += 1;
-        }
-        if (Input.GetKeyDown("left"))
-        {
-            keystroke += 1;
-        }
-        if (Input.GetKeyDown("up"))
-        {
-            keystroke += 1;
-        }
-        if (Input.GetKeyDown("down"))
-        {
-            keystroke += 1;
-        }
-/*
-        if (x != 0 || z != 0)
-        {
-            keystroke += 1;
-        }*/
-       // Debug.Log(keystroke);
+ 
     }
     void Move()
     {
