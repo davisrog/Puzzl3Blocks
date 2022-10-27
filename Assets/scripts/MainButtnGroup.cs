@@ -60,7 +60,7 @@ public class MainButtnGroup : MonoBehaviour
         {
             DataCollector.Instance.IncrementQuits();
             Debug.Log(DataCollector.Instance.GetQuits());
-            SendToGoogleForm.Instance.Send(DataCollector.Instance.GetMoves(),
+            SendToGoogleForm.Instance.Send(DataCollector.Instance.GetBrakes(), DataCollector.Instance.GetMoves(),
                 DataCollector.Instance.GetMoveTookLongest(),
                 DataCollector.Instance.GetDeltaTime().ToString("G"),
                 DataCollector.Instance.GetMaxMoveTime().ToString("G"),
@@ -72,7 +72,7 @@ public class MainButtnGroup : MonoBehaviour
         }
         else
         {
-            SendToGoogleForm.Instance.Send(-1, -1, "undefined", "undefined", -1, -1, "n/a", "n/a", "n/a", 
+            SendToGoogleForm.Instance.Send(-1, -1, -1, "undefined", "undefined", -1, -1, "n/a", "n/a", "n/a", 
                 SceneManager.GetActiveScene().name, "n/a", "n/a");
             Application.Quit();
         }

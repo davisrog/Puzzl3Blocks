@@ -7,6 +7,7 @@ public class DataCollector : MonoBehaviour
 {
 
     private int moves = 0;
+    private int brakes = 0;
     private int movetooklongest = 0;
     private DateTime starttime;
     private DateTime endtime;
@@ -81,7 +82,20 @@ public class DataCollector : MonoBehaviour
         return this.maxmovetime;
     }
 
-  
+  public void IncrementBrakes()
+    {
+        this.brakes += 1;
+    }
+
+    public int GetBrakes()
+    {
+        return this.brakes;
+    }
+
+    public void ResetBrakes()
+    {
+        this.brakes = 0;
+    }
 
     public void IncrementDeaths()
     {
@@ -177,6 +191,7 @@ public class DataCollector : MonoBehaviour
         ResetMoves();
         ResetHints();
         SetLives();
+        ResetBrakes();
     }
     // Start is called before the first frame update
     void Start()

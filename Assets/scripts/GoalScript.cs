@@ -42,9 +42,10 @@ public class GoalScript : MonoBehaviour
             hints = DataCollector.Instance.GetHints();
             DataCollector.Instance.ResetHints();
             DataCollector.Instance.ResetMoves();
+            DataCollector.Instance.ResetBrakes();
             Debug.Log(endmoves);
 
-            SendToGoogleForm.Instance.Send(endmoves, movetooklongest, deltaTimeToSend, longesttimemoveToSend, enddeaths, hints, "n/a", "n/a", "non-cube", currentScene, "n/a", "n/a");
+            SendToGoogleForm.Instance.Send(-1, endmoves, movetooklongest, deltaTimeToSend, longesttimemoveToSend, enddeaths, hints, "n/a", "n/a", "non-cube", currentScene, "n/a", "n/a");
         }
     }
 }

@@ -77,6 +77,7 @@ public class PlayerControllerSphere : MonoBehaviour
             if (ps.drag < 20)
             {
                 ps.drag += 5;
+                DataCollector.Instance.IncrementBrakes();
             }
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))

@@ -71,7 +71,7 @@ public class GameOverController : MonoBehaviour {
     public void ButtonQuitGame() {
         DataCollector.Instance.IncrementQuits();
         Debug.Log(DataCollector.Instance.GetQuits());
-        SendToGoogleForm.Instance.Send(DataCollector.Instance.GetMoves(), 
+        SendToGoogleForm.Instance.Send(DataCollector.Instance.GetBrakes(), DataCollector.Instance.GetMoves(), 
             DataCollector.Instance.GetMoveTookLongest(), 
             DataCollector.Instance.GetDeltaTime().ToString("G"), 
             DataCollector.Instance.GetMaxMoveTime().ToString("G"), 

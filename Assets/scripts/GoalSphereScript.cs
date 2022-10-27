@@ -6,7 +6,7 @@ using System;
 
 public class GoalSphereScript : MonoBehaviour
 {
-
+    private int lvlbrakes = 0;
     private int endmoves = 0;
     private int enddeaths = 0;
     private int hints = 0;
@@ -39,13 +39,15 @@ public class GoalSphereScript : MonoBehaviour
             //Debug.Log("timespan: " + deltaTime);
             currentScene = SceneManager.GetActiveScene().name;
             //deltaTime = deltaTime.ToString();
+            lvlbrakes = DataCollector.Instance.GetBrakes();
             enddeaths = DataCollector.Instance.GetDeaths();
             hints = DataCollector.Instance.GetHints();
             DataCollector.Instance.ResetHints();
             DataCollector.Instance.ResetMoves();
+            DataCollector.Instance.ResetBrakes();
             //Debug.Log(endmoves);
 
-            SendToGoogleForm.Instance.Send(endmoves, movetooklongest, deltaTimeToSend, longesttimemoveToSend, enddeaths, hints, "n/a", "n/a", "non-cube", currentScene, "n/a", "n/a");
+            SendToGoogleForm.Instance.Send(lvlbrakes, endmoves, movetooklongest, deltaTimeToSend, longesttimemoveToSend, enddeaths, hints, "n/a", "n/a", "non-cube", currentScene, "n/a", "n/a");
 
         }
 
